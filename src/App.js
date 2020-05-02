@@ -1,26 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class TrafficLight extends Component {
+  constructor() {
+    super();
+    this.state = {
+      lightRed: "off",
+      lightYellow: "off",
+      lightGreen: "off"
+    };
+  }
+  render() {
+    return (
+          <div className='app'>
+            <div id="bar"></div>
+            <div id="trafficLight">
+              <div className="red light"  id={this.state.lightRed}
+                onClick={() => this.setState({ lightRed: "on", lightYellow: "off", lightGreen: "off" })}>
+              </div>
+              <div className="yellow light" id={this.state.lightGreen}
+                onClick={() => this.setState({ lightRed: "off", lightYellow: "on", lightGreen: "off" })}>
+              </div>
+              <div className="green light" id={this.state.lightGreen}
+                onClick={() => this.setState({ lightRed: "off", lightYellow: "off", lightGreen: "on" })}>
+              </div>
+            </div>
+          </div>
+    );
+  }
 }
 
-export default App;
+export default TrafficLight;
